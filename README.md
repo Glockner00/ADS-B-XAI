@@ -17,7 +17,7 @@ This project proposes a method for identifying injected or manipulated ADS-B seq
 
 - SHAP: Visualizes feature importance using kernel SHAP approximation. Supports batch processing for large datasets.
 - LIME: Provides instance-specific explanations for anomalous samples.
-- Important Features: `longitude`, `latitude`, `geo_altitude`, `velocity`, `vertical_rate`, `squawk`, `baro_altitude`
+- Important Features: `longitude`,  `true_track`, `latitude`, `geo_altitude`, `velocity`, `vertical_rate`, `squawk`, `baro_altitude`
 
 ## How to Run
 
