@@ -9,10 +9,10 @@ import time
 from model import RecurrentAutoencoder, LossThresholdClassifier
 
 DEVICE = torch.device("cpu")
-MODEL_PATH = "C:/Users/olleh/Downloads/shapley/shapley/data_real/model.pth"
-BACKGROUND_PATH = "C:/Users/olleh/Downloads/shapley/shapley/data_real/background_data_subset.npy"
-TEST_NORM_PATH = "C:/Users/olleh/Downloads/shapley/shapley/data_real/test_data_norm_subset.npy"
-TEST_ANOM_PATH = "C:/Users/olleh/Downloads/shapley/shapley/data_real/test_data_anom_subset.npy"
+MODEL_PATH = "C:/Users/olleh/LIU/kandidat/ADS-B-XAI/shap_and_lime/data_real/model.pth"
+BACKGROUND_PATH = "C:/Users/olleh/LIU/kandidat/ADS-B-XAI/shap_and_lime/data_real/background_data_subset.npy"
+TEST_NORM_PATH = "C:/Users/olleh/LIU/kandidat/ADS-B-XAI/shap_and_lime/data_real/test_data_norm_subset.npy"
+TEST_ANOM_PATH = "C:/Users/olleh/LIU/kandidat/ADS-B-XAI/shap_and_lime/data_real/test_data_anom_subset.npy"
 
 SEQ_LEN = 7
 N_FEATURES = 1
@@ -77,8 +77,8 @@ compute_shap_in_batches(explainer, test_data_anom, prefix="anom")
 
 
 shap_values_anom = load_all_batches("anom")
-np.save("shap_values_anom.npy", shap_values_anom)
-print(f"Saved at shap_values_anom.npy ({shap_values_anom.shape})")
+np.save("shap_values_anom_new.npy", shap_values_anom)
+print(f"Saved at shap_values_anom_new.npy ({shap_values_anom.shape})")
 
 # compute_shap_in_batches(explainer, test_data_norm, prefix="norm")
 # shap_values_norm = load_all_batches("norm")

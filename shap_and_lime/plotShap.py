@@ -8,8 +8,8 @@ import torch
 from model import LossThresholdClassifier, RecurrentAutoencoder
 
 # === Konfiguration ===
-BACKGROUND_PATH = "data/background_data_subset.npy"
-MODEL_PATH = "data/model.pth"
+BACKGROUND_PATH = "C:/Users/olleh/LIU/Kandidat/ADS-B-XAI/shap_and_lime/data_real/background_data_subset.npy"
+MODEL_PATH = "C:/Users/olleh/LIU/Kandidat/ADS-B-XAI/shap_and_lime/data_real/model.pth"
 SEQ_LEN = 8
 N_FEATURES = 1
 THRESHOLD = 0.3
@@ -106,8 +106,8 @@ def generate_all_shap_plots(shap_values, X, feature_names, label="anom", sample_
     plt.close()
 
 # === Kör ===
-shap_values_anom = np.load("data/shap_values_anom.npy", allow_pickle=True)
-X_anom = np.load("data/test_data_anom_subset.npy")
+shap_values_anom = np.load("C:/Users/olleh/LIU/Kandidat/ADS-B-XAI/shap_and_lime/data_real/shap_values_anom.npy", allow_pickle=True)
+X_anom = np.load("C:/Users/olleh/LIU/Kandidat/ADS-B-XAI/shap_and_lime/data_real/test_data_anom_subset.npy")
 if isinstance(shap_values_anom, list):
     shap_values_anom = shap_values_anom[0]
 

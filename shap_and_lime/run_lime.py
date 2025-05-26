@@ -9,11 +9,11 @@ import os
 
 # === Konfiguration ===
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-MODEL_PATH = "data/model.pth"
-SEQ_LEN = 8
+MODEL_PATH = "C:/Users/olleh/Downloads/shapley/data_real/model.pth"
+SEQ_LEN = 7
 N_FEATURES = 1
 
-feature_names = ['long', 'lat', 'baro_altitude', 'velocity', 'true_track',
+feature_names = ['long', 'lat', 'baro_altitude', 'velocity',
                  'vertical_rate', 'geo_altitude', 'squawk']
 
 # === Modell ===
@@ -43,7 +43,7 @@ def save_combined_histograms(df, order, label):
         ax.set_ylabel("Count")
 
     plt.tight_layout(rect=[0, 0, 1, 0.95])
-    plt.savefig(f"lime/histograms_combined_{label}.png", dpi=300)
+    plt.savefig(f"C:/Users/olleh/Downloads/shapley/lime_anom/histograms_combined_{label}.png", dpi=300)
     plt.close()
 
 # === Huvudfunktion för analys och plottning ===
@@ -60,7 +60,7 @@ def run_lime_analysis(data_path, label):
     )
 
     # Generera förklaringar
-    num_samples = 1500
+    num_samples = 500
     explanations = []
     for i in range(num_samples):
         exp = explainer.explain_instance(
@@ -86,12 +86,12 @@ def run_lime_analysis(data_path, label):
         plt.title(f"{filename.replace('_', ' ').title()} ({label})")
         plt.xticks(rotation=45)
         plt.tight_layout()
-        plt.savefig(f"lime/{filename}_{label}.png", dpi=300)
+        plt.savefig(f"C:/Users/olleh/Downloads/shapley/lime_anom/{filename}_{label}.png", dpi=300)
         plt.close()
 
     save_plot(sns.violinplot, "violinplot")
     save_plot(sns.boxplot, "boxplot")
-    save_plot(sns.swarmplot, "swarmplot", size=4)
+    save_plot(sns.swarmplot, "swarmplot", size=2)
     save_plot(sns.barplot, "barplot", errorbar="sd")
     save_plot(sns.stripplot, "stripplot", jitter=True, size=3)
 
@@ -102,12 +102,12 @@ def run_lime_analysis(data_path, label):
         plt.title(f"Histogram of '{feat}' LIME Importances ({label})")
         plt.xlabel("Importance")
         plt.tight_layout()
-        plt.savefig(f"lime/histogram_{feat}_{label}.png", dpi=300)
+        plt.savefig(f"C:/Users/olleh/Downloads/shapley/lime_anom/histogram_{feat}_{label}.png", dpi=300)
         plt.close()
 
     # Kombinerad histogramplot
     save_combined_histograms(df, order, label)
 
 # === Kör för båda dataseten ===
-run_lime_analysis("data/test_data_norm_subset.npy", "norm")
-run_lime_analysis("data/test_data_anom_subset.npy", "anom")
+#run_lime_analysis("data_real/test_data_norm_subset.npy", "norm")
+run_lime_analysis("C:/Users/olleh/Downloads/shapley/data_real/test_data_anom_subset.npy", "anom")
